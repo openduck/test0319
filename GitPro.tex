@@ -1,0 +1,132 @@
+\documentclass[b5j,landscape]{jsarticle}
+%\input{../common/duckpkg2}
+%\input{../common/duckmacro}
+\usepackage[pstarrows]{pict2e}
+\usepackage{xcolor}
+
+%%
+%%
+%%
+\begin{document}
+
+%%
+\section{Basic}
+\subsection{...}
+
+\begin{description}
+\item status \\ 
+
+\item stagingしたあとのdiff
+\begin{verbatim}
+   git diff --cached
+\end{verbatim}
+
+\item unstaging
+\begin{verbatim}
+   git checkout -- <filename>
+\end{verbatim}
+変更を残しておきたい場合はstashを用いる．
+\\
+
+\item commit \\
+   git commit $\<$-a$\>$
+   \\
+  \textcolor{red}{
+     -aを付けるとstagingしていないファイルも
+     commitの対象となるので要注意！
+  }
+
+\item log
+\begin{verbatim}
+$ git log --pretty=oneline
+dcefa720fd1e00ae0f6e9e5bea5b9041a002957c Merge branch 'w1' of https://github.com/openduck/git-1st into w1
+bd348ccdd4458c91f1c5dca362c01798c5b8d679 modified.
+60957057e2e15c51aaf6810092366f3598f1bb23 modified.
+ab49ed273710a375bb392a9e89a60bdceaf18683 add a famous formula.
+e744986a268040c94b5ab608868811f46647494a delete test.me add test.tex, test.pdf
+e94684ecf1279adfdafd7fb1ffae5ef10180762c 1st commit.
+\end{verbatim}
+
+\begin{verbatim}
+$ git log --graph --oneline
+*   dcefa72 Merge branch 'w1' of https://github.com/openduck/git-1st into w1
+|\  
+| * 6095705 modified.
+* | bd348cc modified.
+|/  
+* ab49ed2 add a famous formula.
+* e744986 delete test.me add test.tex, test.pdf
+* e94684e 1st commit.
+\end{verbatim}
+
+
+
+\item remoteの内容をlocal repogitoryに取得する
+\begin{verbatim}
+   git fetch origin
+\end{verbatim}
+
+
+\item 現在作業中のファイルにリモートの内容をマージする
+\begin{verbatim}
+$ git pull
+remote: Counting objects: 3, done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 3
+Unpacking objects: 100% (3/3), done.
+From github.com:openduck/git-1st
+   e744986..71b8189  master     -> origin/master
+Already up-to-date.
+\end{verbatim}
+
+
+
+\item リモート情報の表示
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim}
+$ git remote show origin
+* remote origin
+  Fetch URL: https://github.com/schacon/simplegit-progit
+  Push  URL: https://github.com/schacon/simplegit-progit
+  HEAD branch: master
+  Remote branch:
+  master tracked
+  Local branch configured for 'git pull':
+  master merges with remote master
+  Local ref configured for 'git push':
+  master pushes to master (up to date)
+\end{verbatim}
+
+
+
+\end{description}
+
+
+\setlength\unitlength{1truecm}
+\begin{picture}(10,10)(-6,6)
+\put( 0,-2){\circle{0.5}}
+\put( 0, 0){\circle{0.5}}
+\put(-2, 2){\circle{0.5}}
+\put(-2, 4){\circle{0.5}}
+\put(-4, 3.9){\makebox{feature-A}}
+\put( 0, 5){\circle{0.5}}
+\put( 0.4, 4.9){\makebox{master}}
+\put( 2, 2){\circle{0.5}}
+\put( 2.4, 1.9){\makebox{fix-B}}
+\put( 0, 6){\circle{0.5}}
+
+\put( 0,-2){\vector( 0, 2){2}}
+\put( 0, 0){\vector(-2, 2){2}}
+\put( 0, 0){\vector( 0, 6){6}}
+\put( 0, 0){\vector( 2, 2){2}}
+\put(-2, 2){\vector( 0, 2){2}}
+\put(-2, 4){\vector( 2, 2){2}}
+\end{picture}
+
+
+\end{document}
+
+
+
+
